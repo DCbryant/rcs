@@ -36,15 +36,16 @@ export type ButtonProps = Partial<NativeButtonProps & AnchorButtonProps>;
 
 function Button(props: PropsWithChildren<ButtonProps & BaseProps>) {
   const { children, className, btnType, size, disabled, href, ...rest } = props;
+  const isLink = !!href || btnType === 'link';
 
   const classes = classNames(baseClass, className, {
     [`${baseClass}-${btnType}`]: btnType,
     [`${baseClass}-default`]: !btnType,
     [`${baseClass}-${size}`]: size,
-    [`${baseClass}-link`]: !!href || btnType === 'link',
+    [`${baseClass}-link`]: isLink,
   });
   let renderContent;
-  if (href) {
+  if (isLink) {
     renderContent = (
       <a className={classes} href={href}  {...rest}>
         {children}
@@ -52,7 +53,7 @@ function Button(props: PropsWithChildren<ButtonProps & BaseProps>) {
     );
   } else {
     renderContent = (
-      <button className={classes} disabled={disabled} {...rest}>
+      <button className={classes} disabled={disabled ? disabled : undefined} {...rest}>
         {children}
       </button>
     );
@@ -63,7 +64,6 @@ function Button(props: PropsWithChildren<ButtonProps & BaseProps>) {
 
 Button.defaultProps = {
   size: 'medium',
-  loading: false,
   disabled: false,
 }
 

@@ -12,15 +12,26 @@ module.exports = {
     "@storybook/addon-storysource"
   ],
   webpackFinal: async (config) => {
-		config.module.rules.push({
-			test: /\.(ts|tsx)$/,
-			use: [
-				{
-					loader: require.resolve("react-docgen-typescript-loader"),
-				},
-			],
-		});
-		config.resolve.extensions.push(".ts", ".tsx");
-		return config;
-	},
+    config.module.rules.push({
+      test: /\.(ts|tsx)$/,
+      use: [
+        {
+          loader: require.resolve("react-docgen-typescript-loader"),
+          options: {
+            shouldExtractLiteralValuesFromEnum: true,
+            propFilter: (prop) => {
+              if (prop.parent) {
+                return !prop.parent.fileName.includes(
+                  "node_modules"
+                );
+              }
+              return true;
+            },
+          },
+        },
+      ],
+    });
+    config.resolve.extensions.push(".ts", ".tsx");
+    return config;
+  },
 };

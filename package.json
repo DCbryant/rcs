@@ -70,6 +70,7 @@
     "husky": "^4.3.0",
     "node-sass": "^4.14.1",
     "prettier": "^2.2.1",
+    "react-docgen-typescript-loader": "^2.1.1",
     "validate-commit-msg": "^2.14.0"
   },
   "config": {

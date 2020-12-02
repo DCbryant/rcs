@@ -8,6 +8,12 @@ export default {
 
 const style = {marginRight: 10};
 
+export const Normal = () => (
+	<>
+		<Button>Normal</Button>
+	</>
+);
+
 export const Disabled = () => (
 	<>
 		<Button disabled>disabled</Button>
