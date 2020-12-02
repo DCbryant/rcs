@@ -1,28 +1,25 @@
-import React, { ButtonHTMLAttributes, PropsWithChildren } from "react";
+import React, { ButtonHTMLAttributes, PropsWithChildren, AnchorHTMLAttributes } from "react";
 import classNames from "classnames";
 
-// import './style.scss';
-
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> { }
+interface BaseButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> { }
 
 type Sizes = 'small' | 'medium' | 'large'
 
-type BtnType = 
-        | "primary"
-        | "default"
-        | "danger"
-        | "secondary"
-        | "success"
-        | "info"
-        | "light"
-        | "warning"
-        | "dark"
-        | "link";
+type BtnType =
+  | "primary"
+  | "default"
+  | "danger"
+  | "secondary"
+  | "success"
+  | "info"
+  | "light"
+  | "warning"
+  | "dark"
+  | "link";
 
 interface BaseProps {
   className?: string,
   size?: Sizes,
-  loading?: boolean,
   disabled?: boolean,
   btnType?: BtnType,
   style?: Record<string, unknown>,
@@ -32,22 +29,36 @@ interface BaseProps {
 
 const baseClass = 'rc-button';
 
+type NativeButtonProps = ButtonHTMLAttributes<HTMLElement> & BaseProps;
+type AnchorButtonProps = BaseButtonProps & AnchorHTMLAttributes<HTMLElement>;
+
+export type ButtonProps = Partial<NativeButtonProps & AnchorButtonProps>;
+
 function Button(props: PropsWithChildren<ButtonProps & BaseProps>) {
-  const { children, className, btnType, size, loading, disabled, ...rest } = props;
+  const { children, className, btnType, size, disabled, href, ...rest } = props;
 
   const classes = classNames(baseClass, className, {
     [`${baseClass}-${btnType}`]: btnType,
     [`${baseClass}-default`]: !btnType,
     [`${baseClass}-${size}`]: size,
-    disabled: disabled,
-    loading: loading,
+    [`${baseClass}-link`]: !!href || btnType === 'link',
   });
+  let renderContent;
+  if (href) {
+    renderContent = (
+      <a className={classes} href={href}  {...rest}>
+        {children}
+      </a>
+    );
+  } else {
+    renderContent = (
+      <button className={classes} disabled={disabled} {...rest}>
+        {children}
+      </button>
+    );
+  }
 
-  return (
-    <button className={classes} disabled={disabled} {...rest}>
-      {children}
-    </button>
-  );
+  return renderContent;
 }
 
 Button.defaultProps = {

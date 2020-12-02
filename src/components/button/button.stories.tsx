@@ -37,3 +37,11 @@ export const BtnType = () => {
 		</>
 	)
 };
+
+export const Link = () => {
+	return (
+		<>
+			<Button href="https://www.baidu.com/" style={style}>primary</Button>
+		</>
+	)
+};

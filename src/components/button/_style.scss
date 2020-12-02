@@ -48,4 +48,23 @@
     color: $blue;
     border-color: $blue;
   }
+
+  &-link {
+    border: 1px dashed lighten($btn-link-color, 10%);
+    color: $btn-link-color;
+    font-weight: $font-weight-base;
+    text-decoration: $link-decoration;
+    &:hover {
+      color: $btn-link-hover-color;
+      text-decoration: $link-hover-decoration;
+    }
+    &:focus {
+      text-decoration: $link-hover-decoration;
+    }
+    &.disabled {
+      color: $btn-link-disabled-color;
+      pointer-events: none;
+      border: 1px dashed $btn-link-disabled-color;
+    }
+  }
 }
