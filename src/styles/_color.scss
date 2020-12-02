@@ -1,0 +1,17 @@
+@each $key, $val in $main-colors {
+  .rc-background-#{$key} {
+    background-color: $val;
+  }
+  .rc-color-#{$key} {
+    color: $val;
+  }
+}
+
+@each $key, $val in $neutral-colors {
+  .rc-background-#{$key} {
+    background-color: $val;
+  }
+  .rc-color-#{$key} {
+    color: $val;
+  }
+}

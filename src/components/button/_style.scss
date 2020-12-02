@@ -1,0 +1,51 @@
+.rc-button {
+  @include button-size($btn-padding-x, $btn-padding-y, $btn-font-size, $border-radius);
+  display: inline-block;
+  border: $btn-border-width solid $btn-border-color;
+  color: $body-color;
+  background-color: $btn-background-color;
+  font-weight: $btn-font-weight;
+  line-height: $btn-line-height;
+  position: relative;
+  vertical-align: middle;
+  text-align: center;
+  cursor: pointer;
+  transition: $btn-transition;
+  white-space: nowrap;
+  user-select: none;
+  touch-action: manipulation;
+
+  &[disabled] {
+    cursor: not-allowed;
+    opacity: $btn-disabled-opacity;
+    > * {
+      pointer-events: none;
+    }
+  }
+
+  &-small {
+    @include button-size($btn-padding-x-sm, $btn-padding-y-sm, $btn-font-size-sm, $border-radius-sm);
+  }
+  &-medium {
+    @include button-size($btn-padding-x, $btn-padding-y, $btn-font-size, $border-radius);
+  }
+  &-large {
+    @include button-size($btn-padding-x-lg, $btn-padding-y-lg, $btn-font-size-lg, $border-radius-lg);
+  }
+  @each $key, $val in $theme-colors {
+    &-#{$key} {
+      @include button-style(nth($val, 1), nth($val, 2));
+    }
+  }
+
+  &-default :hover {
+    outline: none;
+    color: $blue;
+    border-color: $blue;
+  }
+  &-default:focus {
+    outline: none;
+    color: $blue;
+    border-color: $blue;
+  }
+}
