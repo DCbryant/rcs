@@ -98,6 +98,11 @@
       "commit-msg": "commitlint -e $GIT_PARAMS"
     }
   },
+  "sideEffects": [
+    "dist/esm/**/*.scss",
+    "dist/cjs/**/*.scss",
+    "dist/*.css"
+  ],
   "jest": {
     "collectCoverageFrom": [
       "!src/**/*.stories.tsx",
