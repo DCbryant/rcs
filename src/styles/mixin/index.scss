@@ -32,3 +32,10 @@
     color: $color;
   }
 }
+
+@mixin neufactory-noactive($background, $shadow1, $shadow2) {
+  background: $background;
+  border: none;
+  box-shadow: $btn-neu-normal $btn-neu-normal $btn-neu-normal*2 $shadow1;
+  text-shadow: 1px 1px 4px $shadow1, -1px -1px 4px $shadow2;
+}
