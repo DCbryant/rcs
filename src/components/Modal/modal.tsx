@@ -160,6 +160,7 @@ Modal.defaultProps = {
   mask: true,
   closable: true,
   visible: false,
+  width: 520
 }
 
 export default Modal;

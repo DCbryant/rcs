@@ -9,11 +9,9 @@
 
   &-content {
     position: relative;
-    width: 400px;
-    height: 200px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    margin-left: auto;
+    margin-right: auto;
+    top: 100px;
     background: #fff;
 
     background-clip: padding-box;
@@ -22,6 +20,7 @@
     pointer-events: auto;
     z-index: 1000;
     animation: fade .1s;
+    // translate会跟fade动画起冲突
     &.centered {
       top: 50%;
       transform: translateY(-50%);
