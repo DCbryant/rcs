@@ -21,6 +21,7 @@
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     pointer-events: auto;
     z-index: 1000;
+    animation: fade .1s;
     &.centered {
       top: 50%;
       transform: translateY(-50%);
@@ -50,7 +51,6 @@
     right: 0;
     z-index: 10;
     cursor: pointer;
-    animation: fade .3s;
     .rc-modal-close-x {
       display: block;
       width: 56px;
