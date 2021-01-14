@@ -21,7 +21,8 @@ function Body(props: BodyProps) {
                   key={column.key}
                   column={column}
                   bordered={bordered}
-                  title={data[column.dataIndex]}
+                  // column 自定义render
+                  title={column.render ? column.render(data[column.dataIndex], data, column) : data[column.dataIndex]}
                 />
               ))}
             </tr>
