@@ -1,0 +1,49 @@
+.rc-table-wrapper {
+  .rc-table {
+    width: 100%;
+    text-align: left;
+    border-radius: 2px 2px 0 0;
+    border-collapse: separate;
+    border-spacing: 0;
+    table-layout: auto;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    color: rgba(0, 0, 0, 0.65);
+    line-height: 1.5715;
+    list-style: none;
+    position: relative;
+    z-index: 0;
+    clear: both;
+    font-size: 14px;
+    background-color: #fff;
+
+    & > thead > tr > th {
+      color: rgba(0, 0, 0, 0.85);
+      font-weight: 500;
+      text-align: left;
+      background-color: #fafafa;
+      border-bottom: 1px solid #f0f0f0;
+      transition: background .3s ease;
+      position: relative;
+      padding: 16px;
+      overflow-wrap: break-word;
+    }
+
+    & > tbody > tr {
+      & > td {
+        border-bottom: 1px solid #f0f0f0;
+        transition: background .3s;
+        position: relative;
+        padding: 16px;
+        overflow-wrap: break-word;
+      }
+
+      &:hover {
+        & > td {
+          background: #fafafa;
+        }
+      }
+    }
+  }
+}
