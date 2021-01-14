@@ -28,6 +28,9 @@
       position: relative;
       padding: 16px;
       overflow-wrap: break-word;
+      &.bordered {
+        border: 1px solid #f0f0f0;
+      }
     }
 
     & > tbody > tr {
@@ -37,6 +40,9 @@
         position: relative;
         padding: 16px;
         overflow-wrap: break-word;
+        &.bordered {
+          border: 1px solid #f0f0f0;
+        }
       }
 
       &:hover {

@@ -1,37 +1,34 @@
 import React from 'react'
 import classNames from "classnames";
+import Header from './header';
+import Body from './body';
 
 interface TableProps {
-	dataSource: Record<string, any>[],
-	columns: Record<string, any>[]
+	dataSource: Record<string, any>[];
+	columns: Record<string, any>[];
+	bordered?: boolean;
 }
+
+// 嵌套数据
+// column自定义render
+// 数据排序
+// 虚拟滚动
 
 const baseClass = 'rc-table';
 function Table(props: TableProps) {
-	const {dataSource, columns} = props;
+	const { dataSource, columns, bordered } = props;
 	return (
 		<div className={`${baseClass}-wrapper`}>
 			<table className={baseClass}>
-				<thead>
-					<tr>
-						{columns.map(column => (
-							<th className={`${baseClass}-cell`} key={column.key}>
-								{column.title}
-							</th>
-						))}
-					</tr>
-				</thead>
-				<tbody>
-					{dataSource.map(data => (
-						<tr key={data.key} >
-							{columns.map(column => (
-								<td className={`${baseClass}-cell`} key={column.key}>
-									{data[column.dataIndex]}
-								</td>
-							))}
-						</tr>
-					))}
-				</tbody>
+				<Header
+					columns={columns}
+					bordered={bordered}
+				/>
+				<Body
+					columns={columns}
+					dataSource={dataSource}
+					bordered={bordered}
+				/>
 			</table>
 		</div>
 	)

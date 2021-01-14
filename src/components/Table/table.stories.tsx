@@ -11,7 +11,13 @@ const dataSource = [
     key: '1',
     name: '胡彦斌',
     age: 32,
-    address: '西湖区湖底公园1号',
+		address: '西湖区湖底公园1号',
+		children: [{
+			key: '1.1',
+			name: '胡彦斌.x',
+			age: 44,
+			address: '汤臣一品',
+		}]
   },
   {
     key: '2',
@@ -25,7 +31,11 @@ const columns = [
   {
     title: '姓名',
     dataIndex: 'name',
-    key: 'name',
+		key: 'name',
+		// eslint-disable-next-line react/display-name
+		render: () => {
+			return <div>xxxx</div>;
+		}
   },
   {
     title: '年龄',
