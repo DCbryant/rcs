@@ -51,19 +51,30 @@ function Pagination(props: PaginationProps) {
 		return arr
 	}
 
+	function gotoPage(page: number) {
+		setCurrent(page)
+		const arr = calculateMove(page);
+		if (arr) {
+			setState(arr);
+		}
+	}	
+
 
 	return (
 		<ul className={baseClass}>
-			<li className={`${baseClass}-prev ${baseClass}-item`}>&lt;</li>
+			<li 
+				className={`${baseClass}-prev ${baseClass}-item`}
+				onClick={() => {
+					gotoPage(current - 1)
+				}}
+			>
+				&lt;
+			</li>
 			{state.map((s, i) => {
 				return (
 					<li key={i}
 						onClick={() => {
-							setCurrent(s)
-							const arr = calculateMove(s);
-							if (arr) {
-								setState(arr);
-							}
+							gotoPage(s)
 						}}
 						className={`${baseClass}-item ${s === current ? 'active' : ''}`}
 					>
@@ -71,7 +82,14 @@ function Pagination(props: PaginationProps) {
 					</li>
 				);
 			})}
-			<li className={`${baseClass}-next ${baseClass}-item`}>&gt;</li>
+			<li 
+				className={`${baseClass}-next ${baseClass}-item`}
+				onClick={() => {
+					gotoPage(current + 1)
+				}}
+			>
+				&gt;
+			</li>
 		</ul>
 	)
 }
