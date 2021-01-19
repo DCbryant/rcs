@@ -25,6 +25,10 @@
     &.active {
       border-color: #1890ff;
     }
+    &.disabled {
+      cursor: not-allowed;
+      opacity: .3;
+    }
     &:hover {
       border-color: #1890ff;
     }

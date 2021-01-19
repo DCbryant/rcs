@@ -61,9 +61,11 @@ function Pagination(props: PaginationProps) {
 	return (
 		<ul className={baseClass}>
 			<li 
-				className={`${baseClass}-prev ${baseClass}-item`}
+				className={`${baseClass}-prev ${baseClass}-item ${current === 1 ? 'disabled' : ''}`}
 				onClick={() => {
-					gotoPage(current - 1)
+					if (current > 1) {
+						gotoPage(current - 1)
+					}
 				}}
 			>
 				&lt;
@@ -133,9 +135,11 @@ function Pagination(props: PaginationProps) {
 				</>
 			)}
 			<li 
-				className={`${baseClass}-next ${baseClass}-item`}
+				className={`${baseClass}-next ${baseClass}-item ${current === total ? 'disabled' : ''} `}
 				onClick={() => {
-					gotoPage(current + 1)
+					if (current < total) {
+						gotoPage(current + 1)
+					}
 				}}
 			>
 				&gt;
