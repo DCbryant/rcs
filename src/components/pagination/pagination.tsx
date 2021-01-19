@@ -1,4 +1,4 @@
-import React, {useState, useMemo} from 'react'
+import React, {useState, useEffect} from 'react'
 import classNames from "classnames";
 
 interface PaginationProps {
@@ -14,7 +14,7 @@ function Pagination(props: PaginationProps) {
 	const [current, setCurrent] = useState(defaultCurrent);
 	const [state, setState] = useState<Array<number>>([]);
 
-	const totalPage = useMemo(() => {
+	useEffect(() => {
 		const number = Math.ceil(total / pageSize)
 		if (number > barMaxSize) {
 			const tmp = new Array(barMaxSize).fill(1).map((x, i) => i + 1)
@@ -31,8 +31,6 @@ function Pagination(props: PaginationProps) {
 				setState(arr)
 			}
 		}
-
-		return number
 	}, [pageSize, total]);
 
 	function calculateMove (current: number): number[] | null {
@@ -70,6 +68,38 @@ function Pagination(props: PaginationProps) {
 			>
 				&lt;
 			</li>
+			{current === 4 && (
+				<>
+					<li
+						className={`${baseClass}-item`}
+						onClick={() => {
+							gotoPage(1)
+						}}
+					>
+						1
+					</li>
+				</>
+			)}
+			{current >= 5 && (
+				<>
+					<li
+						className={`${baseClass}-item`}
+						onClick={() => {
+							gotoPage(1)
+						}}
+					>
+						1
+					</li>
+					<li
+						className={`${baseClass}-item`}
+						onClick={() => {
+							gotoPage(current - 5)
+						}}
+					>
+						•••
+					</li>
+				</>
+			)}
 			{state.map((s, i) => {
 				return (
 					<li key={i}
@@ -82,6 +112,26 @@ function Pagination(props: PaginationProps) {
 					</li>
 				);
 			})}
+			{total - current >= 4 && (
+				<>
+					<li 
+						className={`${baseClass}-prev ${baseClass}-item`}
+						onClick={() => {
+							gotoPage(current + 5)
+						}}
+					>
+						•••
+					</li>
+					<li 
+						className={`${baseClass}-prev ${baseClass}-item`}
+						onClick={() => {
+							gotoPage(total)
+						}}
+					>
+						{total}
+					</li>
+				</>
+			)}
 			<li 
 				className={`${baseClass}-next ${baseClass}-item`}
 				onClick={() => {

@@ -8,6 +8,6 @@ export default {
 
 export const Current = () => {
 	return (
-		<Pagination defaultCurrent={11} total={50} />
+		<Pagination defaultCurrent={11} total={30} />
 	)
 }
