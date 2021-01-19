@@ -1,0 +1,32 @@
+.rc-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  & > li {
+    list-style: none;
+    cursor: pointer;
+  }
+
+  &-item {
+    display: inline-block;
+    height: 32px;
+    margin-right: 8px;
+    line-height: 30px;
+    min-width: 32px;
+    text-align: center;
+    list-style: none;
+    background-color: #fff;
+    border: 1px solid #d9d9d9;
+    border-radius: 2px;
+    outline: 0;
+    cursor: pointer;
+    vertical-align: middle;
+    &.active {
+      border-color: #1890ff;
+    }
+    &:hover {
+      border-color: #1890ff;
+    }
+  }
+}
