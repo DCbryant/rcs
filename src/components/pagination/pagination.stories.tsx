@@ -6,7 +6,7 @@ export default {
 	component: { Pagination },
 };
 
-export const Current = () => {
+export const Normal = () => {
 	return (
 		<Pagination defaultCurrent={11} total={30} />
 	)
